@@ -1,29 +1,43 @@
-import { func } from "prop-types";
-import styles from "./App.module.css"
-import { useState, useEffect } from "react";
-
-function Hello() {
-  function byeFn() {
-    console.log("bye :(")
-  }
-  
-  function hiFn() {
-    console.log("created :)");
-    return byeFn;
-  }
-
-  // Cleanup function: component가 destroy 될 때 실행되도록 할 수 있음
-  useEffect(hiFn, [])
-  return <h1>Hello</h1>;
-}
+import { useState } from "react";
 
 function App() {
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing((prev) => !prev);
+  const [toDo, setTodo] = useState("");
+  const [toDos, setTodos] = useState([]);
+
+  const onChange = (event) => setTodo(event.target.value);
+  const onSubmit = (event) => {
+    event.preventDefault();
+    // toDo가 비어 있다면 함수가 작동하지 않도록 함
+    if (toDo == "") {
+      return;
+    }
+
+    // currentArray를 받아오고 새로운 array를 추가해줌
+    // [(array), ...(other array)]: array 내에 새로운 요소를 추가
+    setTodos((currentArray) => [toDo, ...currentArray]);
+
+    // input 창을 비워줌
+    setTodo("");
+  };
+
+  // map 함수에서 첫번째 인자는 배열 내의 각 요소를 의미함
   return (
     <div>
-      {showing ? <Hello /> : null}
-      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+      <h1>My To Dos ({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
+        <input 
+          onChange={onChange} 
+          value={toDo} 
+          text="Text" 
+          placeholder="Write your to do" 
+        />
+        <button>Add To Do</button>
+      </form>
+      <hr />
+      <ul>
+        {toDos.map((item, index) => (
+          <li key={index}>{item}</li>))}
+      </ul>
     </div>
   );
 }
