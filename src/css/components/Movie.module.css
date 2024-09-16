@@ -1,0 +1,46 @@
+@import '../reset.css';
+
+.container {
+    width: 30%;
+    height: auto;
+    box-sizing: border-box;
+    box-shadow: 15px 15px 20px rgba(220, 220, 220, 637);
+    background-color: initial;
+    border: 1px solid rgb(255, 255, 255, 0.1);
+    border-radius: 3%;
+    margin: 50px 0 50px 0;
+    padding: 20px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    text-decoration-line: none;
+    &:hover {
+        background-color: rgba(99, 153, 172, 0.089);
+        transform: scale(1.05);
+        transition: all 0.4s;
+    }
+}
+
+.poster {
+    /* 사진 크기 웹페이지 사이즈에 따라 변경됨 */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.title {
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.year {
+    color: black;
+    font-size: 15px;
+    font-weight: 280;
+    margin-top: 7px;
+}
+
+.genres {
+    margin-top: 5px;
+    color: black;
+    font-weight: 300;
+}
