@@ -21,14 +21,31 @@ function Detail() {
     }, [])
 
     return (
-        <div>
+        <div className={style.container}>
             {loading ? <h2>Loading...</h2> : 
                 <div>
-                    <img src={detail.medium_cover_image} />
-                    <h2>{detail.title}</h2>
-                    <span>Rating: {detail.rating}</span>
-                    <div className={style.genres}>
-                        {detail.genres.map((genre) => <span>{genre}</span>)}
+                    <h1 className={style.site_title}>Movie</h1>
+                    <hr />
+                    <div className={style.container_box}>
+                        <img src={detail.large_cover_image} />
+                        <div className={style.text_box}>
+                            <h1 className={style.title}>{detail.title}</h1>
+                            <div className={style.year}>{detail.year} &nbsp;|&nbsp; {detail.runtime}분</div>
+                            <div className={style.rating}>Rating: {detail.rating}</div>
+                            <div className={style.likes}>Likes: {detail.like_count}</div>
+                            <div className={style.genre}>
+                                <span>
+                                    Genre: {detail.genres.map((genre, index) => (
+                                        <span key={genre}>
+                                            {index !== detail.genres.length - 1 ? <span>{genre}, </span> : <span>{genre}</span>}
+                                        </span>
+                                    ))}
+                                </span>
+                            </div>
+                            <div className={style.description}>
+                                <span>{detail.description_full}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }

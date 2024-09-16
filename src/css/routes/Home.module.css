@@ -1,0 +1,31 @@
+@import "../reset.css";
+
+.title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: white;
+    display: flex;
+
+    .box {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: 0 auto;
+    }
+}
+
+hr {
+    background-color: rgba(0, 0, 0, 0.219);
+    margin-top: 15px;
+    border: 0;
+    height: 1px;
+    width: 50%;
+}

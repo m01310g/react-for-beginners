@@ -1,5 +1,58 @@
 @import '../reset.css';
 
-.genres {
-    margin-bottom: 7px;
+.site_title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: white;
+    height: auto;
+
+    .container_box {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        margin: 30px auto;
+
+        .text_box {
+            width: 40%;
+            padding: 20px;
+
+            .title {
+                font-weight: bold;
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+
+            .year {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+
+            .rating {
+                font-size: 15px;
+                margin-bottom: 7px;
+            }
+
+            .likes {
+                font-size: 15px;
+                margin-bottom: 7px;
+            }
+
+            .genre {
+                font-size: 15px;
+                margin-bottom: 7px;
+            }
+
+            .description {
+                font-size: 20px;
+                margin-top: 15px;
+                line-height: 120%;
+            }
+        }
+    }
 }
