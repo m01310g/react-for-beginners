@@ -16,7 +16,7 @@ function Movie({id, coverImg, title, year, runtime, genres}) {
                 </div>
                 <div className={style.genres}>
                     <span>
-                        장르: {genres.map((genre, index) => (
+                        Genre: {genres.map((genre, index) => (
                             <span key={genre}>{index !== genres.length - 1 ? <span>{genre}, </span> : <span>{genre}</span>}</span>
                         ))}
                     </span>

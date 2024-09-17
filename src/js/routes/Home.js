@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import style from "../../css/routes/Home.module.css";
+import { BeatLoader } from "react-spinners";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -33,10 +34,14 @@ function Home() {
   
   return (
     <div className={style.container}>
-      {loading ? <h1>Loading...</h1> : 
+      {loading ? 
+        <div className={style.loading_container}>
+          <BeatLoader />
+          <h2 className={style.loading_text}>Loading...</h2>
+        </div> : 
         <div>
           <h1 className={style.title}>Movie</h1>
-          <hr />
+          <hr className={style.hr} />
           <div className={style.box}>
             {movies.map((movie) => (
               <Movie 

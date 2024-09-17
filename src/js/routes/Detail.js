@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import style from "../../css/routes/Detail.module.css"
+import { BeatLoader } from "react-spinners";
 
 function Detail() {
     const {id} = useParams();
@@ -22,10 +23,14 @@ function Detail() {
 
     return (
         <div className={style.container}>
-            {loading ? <h2>Loading...</h2> : 
+            {loading ? 
+                <div className={style.loading_container}>
+                    <BeatLoader />
+                    <h2 className={style.loading_text}>Loading...</h2>
+                </div> : 
                 <div>
                     <h1 className={style.site_title}>Movie</h1>
-                    <hr />
+                    <hr className={style.hr_detail} />
                     <div className={style.container_box}>
                         <img src={detail.large_cover_image} />
                         <div className={style.text_box}>
@@ -41,9 +46,11 @@ function Detail() {
                                         </span>
                                     ))}
                                 </span>
+                                <hr className={style.hr_detail} />
                             </div>
-                            <div className={style.description}>
-                                <span>{detail.description_full}</span>
+                            <div className={style.description_container}>
+                                <h3 className={style.description_text}>Description</h3>
+                                <div className={style.description_content}>{detail.description_full}</div>
                             </div>
                         </div>
                     </div>
