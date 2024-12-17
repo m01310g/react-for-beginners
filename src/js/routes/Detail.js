@@ -7,6 +7,7 @@ function Detail() {
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
     const [detail, setDetail] = useState([]);
+    const [showFullDescription, setShowFullDescription] = useState(false);
 
     const getMovie = async () => {
         const json = await(
@@ -21,6 +22,10 @@ function Detail() {
         getMovie();
     }, [])
 
+    const toggleDescription = () => {
+        setShowFullDescription((prev) => !prev);
+    };
+
     return (
         <div className={style.container}>
             {loading ? 
@@ -32,11 +37,11 @@ function Detail() {
                     <h1 className={style.site_title}>Movie</h1>
                     <hr className={style.hr_detail} />
                     <div className={style.container_box}>
-                        <img src={detail.large_cover_image} />
+                        <img className={style.cover_img} src={detail.medium_cover_image} />
                         <div className={style.text_box}>
                             <h1 className={style.title}>{detail.title}</h1>
                             <div className={style.year}>{detail.year} &nbsp;|&nbsp; {detail.runtime}분</div>
-                            <div className={style.rating}>Rating: {detail.rating}</div>
+                            <div className={style.rating}>Rating: {detail.rating} / 5.0</div>
                             <div className={style.likes}>Likes: {detail.like_count}</div>
                             <div className={style.genre}>
                                 <span>
@@ -50,7 +55,12 @@ function Detail() {
                             </div>
                             <div className={style.description_container}>
                                 <h3 className={style.description_text}>Description</h3>
-                                <div className={style.description_content}>{detail.description_full}</div>
+                                <div className={`${style.description_content} ${showFullDescription ? style.expanded : ''}`}>
+                                    {detail.description_full}
+                                </div>
+                                <button className={style.view_detail} onClick={toggleDescription}>
+                                    {showFullDescription ? 'Show Less' : 'Show Detail'}
+                                </button>
                             </div>
                         </div>
                     </div>

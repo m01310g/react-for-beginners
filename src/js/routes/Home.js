@@ -51,7 +51,6 @@ function Home() {
                 title={movie.title}
                 year={movie.year}
                 runtime={movie.runtime}
-                genres={movie.genres}
               />
             ))}
           </div>

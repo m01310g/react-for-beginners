@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import style from "../../css/components/Movie.module.css";
 
 // title을 클릭하면 Detail 페이지로 이동
-function Movie({id, coverImg, title, year, runtime, genres}) {
+function Movie({id, coverImg, title, year, runtime}) {
     return (
         <div className={style.container}>
             <Link to={`/movie/${id}`} style={{textDecoration: "none"}}>
@@ -12,14 +12,8 @@ function Movie({id, coverImg, title, year, runtime, genres}) {
                     <h2 className={style.title}>{title}</h2>
                 </div>
                 <div className={style.year}>
-                    <span>{year} &nbsp;|&nbsp; {runtime}분</span>
-                </div>
-                <div className={style.genres}>
-                    <span>
-                        Genre: {genres.map((genre, index) => (
-                            <span key={genre}>{index !== genres.length - 1 ? <span>{genre}, </span> : <span>{genre}</span>}</span>
-                        ))}
-                    </span>
+                    <span>{year}</span><br/>
+                    <span>{runtime}분</span>
                 </div>
             </Link>
         </div>
@@ -32,7 +26,6 @@ Movie.propTypes = {
     title: PropTypes.string.isRequired,
     year:PropTypes.number.isRequired,
     runtime:PropTypes.number.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string).isRequired
 }
 
 export default Movie;

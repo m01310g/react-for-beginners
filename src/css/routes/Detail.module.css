@@ -39,12 +39,19 @@
     .container_box {
         width: 60%;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         margin: 30px auto;
+        
+        .cover_img {
+            height: fit-content;
+            width: 300px;
+        }
 
         .text_box {
-            width: 40%;
             padding: 20px;
+            text-align: center;
 
             .title {
                 font-weight: bold;
@@ -80,9 +87,28 @@
                 }
 
                 .description_content {
+                    display: -webkit-box;
                     font-size: 18px;
                     margin-top: 15px;
                     line-height: 150%;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .description_content.expanded {
+                    -webkit-line-clamp: none; /* 전체 내용 표시 */
+                    overflow: visible; /* 숨기지 않음 */
+                    text-overflow: unset;
+                }
+
+                .view_detail {
+                    color: grey;
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                    text-decoration: underline;
                 }
             }
         }
